@@ -29,9 +29,20 @@
 
   $.fn.fartscroll = function(trigger_distance) {
     trigger_distance = trigger_distance || 400;
-    
-    var player = document.createElement("audio");
-    $("body").append(player);
+
+    var player;
+
+    if ($('#fartplayer').length === 0){
+
+    	player = document.createElement("audio");
+	player.id = 'fartplayer';
+
+    	$("body").append(player);
+    }
+    else {
+   	player = $('#fartplayer').get()[0];
+    }
+
     var audio;
     var prefix;
     if(player.canPlayType("audio/mp3")) {
@@ -55,3 +66,4 @@
     });
   };
 })( jQuery );
+
